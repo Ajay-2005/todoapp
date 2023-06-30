@@ -86,16 +86,25 @@ body {
   font-style: normal;
   color: grey;
 }
-.ActiveTask{
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  transform: translate(-50%, -10%);
-  margin-top: 0.8em;
+.completeTask{
+  left:50%;
+  margin-top: 20px;
+  text-align: center;
+
 }
-.ActiveTask .input-list input{
+.completeTask{
+  position: absolute;
+  top: 100%;
+  left: 35%;
+  text-align: center;
+  transform: translate(-50%, -10%);
+  margin-top: 5em;
+}
+
+  
+.completeTask .input-list input{
   margin-top: 1.5rem;
-  width: 20em;
+  width: 25em;
   height: 2em;
   background-color: white;
   display: flex;
@@ -105,4 +114,8 @@ body {
   padding: 5px;
   outline-color: transparent;
   border-color: transparent;
+  margin-left: 15%;
 }
+ 
+
+

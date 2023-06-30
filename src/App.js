@@ -8,13 +8,6 @@ function App() {
 
     return (
         <div>
-           
-            
-               
-            
-
-
-
             <div className="app">
                 <div className="mainHeading">
                     <h1>ToDo List</h1>
@@ -36,37 +29,66 @@ function App() {
                 <div className="todos">
                     {
                         toDos.map((obj) => {
+                            if (obj.status) {
+                                return null;
+                            }
                             return (
                                 <div className="todo" key={obj.id}>
                                     <div className="left">
-                                        <input onChange={(e) => {
-                                            console.log(e.target.checked)
-                                            console.log(obj)
-                                            setTodos(toDos.filter((obj2) => {
-                                                if (obj2.id === obj.id) {
-                                                    obj2.status = e.target.checked
-                                                }
-                                                return obj2
-                                            }))
-                                        }} obj={obj.status} type="checkbox" name="" id="" />
+                                        <input
+                                            onChange={(e) => {
+                                                console.log(e.target.checked);
+                                                console.log(obj);
+                                                setTodos(
+                                                    toDos.map((obj2) => {
+                                                        if (obj2.id === obj.id) {
+                                                            obj2.status = e.target.checked;
+                                                        }
+                                                        return obj2;
+                                                    })
+                                                );
+                                            }}
+                                            obj={obj.status}
+                                            type="checkbox"
+                                            name=""
+                                            id=""
+                                        />
                                         <p>{obj.text}</p>
                                     </div>
                                     <div className="right">
-                                        <i className="fas fa-times" onClick={(e) => {
-                                            setTodos(toDos.filter((obj2) => {
-                                                let temp;
-                                                if (obj2.id !== obj.id) {
-                                                    temp = obj2
-                                                }
-                                                return temp;
-                                            }))
-                                        }}></i>
+                                        <i
+                                            className="fas fa-times"
+                                            onClick={(e) => {
+                                                setTodos(
+                                                    toDos.filter((obj2) => {
+                                                        return obj2.id !== obj.id;
+                                                    })
+                                                );
+                                            }}
+                                        ></i>
                                     </div>
-                                </div>)
-                        }
-                        )}
-
+                                </div>
+                            );
+                        })
+                    }
                 </div>
+
+                <div className='completeTask'>
+                    {toDos.some((obj) => obj.status) && <h1>Complete Task</h1>}
+                    {
+                        toDos.map((obj) => {
+                            if (obj.status) {
+                                return (
+                                    <div className='input-list'>
+                                        <input type="text" value={obj.text} />
+                                    </div>
+                                );
+                            }
+                            return null;
+                        })
+                    }
+                </div>
+
 
 
 
