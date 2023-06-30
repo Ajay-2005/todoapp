@@ -19,6 +19,9 @@ body {
 .app .mainHeading h1 {
   text-align: center;
 }
+.app .subHeading h2{
+  text-align: center;
+}
 
 .app,h1{
   color: wheat;
